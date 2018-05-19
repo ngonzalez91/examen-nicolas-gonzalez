@@ -1,0 +1,19 @@
+-------------------------------------------------------------------------------
+Test set: hellocucumber.RunCucumberTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 145.469 sec <<< FAILURE!
+Verify I can search flights given 'from, to, depart date, and return date' parameters(Flight search)  Time elapsed: 145.199 sec  <<< ERROR!
+org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of all [] (tried for 120 second(s) with 500 milliseconds interval)
+Build info: version: '3.12.0', revision: '7c6e0b3', time: '2018-05-08T14:04:26.12Z'
+System info: host: 'mbp-de-nicolas', ip: '2800:a4:1220:b00:cba:c567:292c:105a%en0', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.13.3', java.version: '1.8.0_171'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, acceptSslCerts: false, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.38.552518 (183d19265345f5..., userDataDir: /var/folders/l3/qy6n0xjs4xs...}, cssSelectorsEnabled: true, databaseEnabled: false, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: MAC, platformName: MAC, rotatable: false, setWindowRect: true, takesHeapSnapshot: true, takesScreenshot: true, unexpectedAlertBehaviour: , unhandledPromptBehavior: , version: 66.0.3359.181, webStorageEnabled: true}
+Session ID: bf0bf3f70e3ed5e4cc756b7547a43ac4
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:81)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:271)
+	at hellocucumber.CommonComponents.FlightsGeoAutocompleteComponent.waitUntilItemsAreAllVisibles(FlightsGeoAutocompleteComponent.java:66)
+	at hellocucumber.CommonComponents.FlightsGeoAutocompleteComponent.clickOnAirport(FlightsGeoAutocompleteComponent.java:40)
+	at hellocucumber.pageObjects.Flight.SearchFlightPage.searchFlights(SearchFlightPage.java:49)
+	at hellocucumber.steps.Flight.FlightSearchSteps.i_search_for_flights(FlightSearchSteps.java:30)
+	at ✽.I search for flights(src/test/resources/hellocucumber/features/FlightSearch.feature:6)
+

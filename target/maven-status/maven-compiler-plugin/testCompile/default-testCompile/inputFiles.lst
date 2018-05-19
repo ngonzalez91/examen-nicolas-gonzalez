@@ -1,0 +1,16 @@
+/Users/nicolasgonzalez/Documents/despegar/hellocucumber/src/test/java/hellocucumber/steps/Accommodation/AccommodationSearchSteps.java
+/Users/nicolasgonzalez/Documents/despegar/hellocucumber/src/test/java/hellocucumber/pageObjects/Accommodation/SearchAccomodationPage.java
+/Users/nicolasgonzalez/Documents/despegar/hellocucumber/src/test/java/hellocucumber/steps/AbstractBaseSteps.java
+/Users/nicolasgonzalez/Documents/despegar/hellocucumber/src/test/java/hellocucumber/Utils/Utils.java
+/Users/nicolasgonzalez/Documents/despegar/hellocucumber/src/test/java/hellocucumber/pageObjects/Flight/PurchaseFlightPage.java
+/Users/nicolasgonzalez/Documents/despegar/hellocucumber/src/test/java/hellocucumber/pageObjects/Flight/SearchFlightPage.java
+/Users/nicolasgonzalez/Documents/despegar/hellocucumber/src/test/java/hellocucumber/RunCucumberTest.java
+/Users/nicolasgonzalez/Documents/despegar/hellocucumber/src/test/java/hellocucumber/pageObjects/AbstractBasePage.java
+/Users/nicolasgonzalez/Documents/despegar/hellocucumber/src/test/java/hellocucumber/pageObjects/Accommodation/PurchaseAccommodationPage.java
+/Users/nicolasgonzalez/Documents/despegar/hellocucumber/src/test/java/hellocucumber/steps/Accommodation/AccommodationPurchaseSteps.java
+/Users/nicolasgonzalez/Documents/despegar/hellocucumber/src/test/java/hellocucumber/pageObjects/Flight/SearchFlightResultsPage.java
+/Users/nicolasgonzalez/Documents/despegar/hellocucumber/src/test/java/hellocucumber/steps/Flight/FlightSearchSteps.java
+/Users/nicolasgonzalez/Documents/despegar/hellocucumber/src/test/java/hellocucumber/steps/CommonSteps.java
+/Users/nicolasgonzalez/Documents/despegar/hellocucumber/src/test/java/hellocucumber/CommonComponents/FlightsGeoAutocompleteComponent.java
+/Users/nicolasgonzalez/Documents/despegar/hellocucumber/src/test/java/hellocucumber/pageObjects/Accommodation/SearchAccommodationResultsPage.java
+/Users/nicolasgonzalez/Documents/despegar/hellocucumber/src/test/java/hellocucumber/steps/Flight/FlightPurchaseSteps.java
