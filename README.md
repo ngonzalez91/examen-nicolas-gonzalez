@@ -1,6 +1,28 @@
 # About the project
 This is a Maven Automation project, and technollogies used are: Cucumber, Java, and Selenium Webdriver.
 
+# Project Structure
+
+```bash
+├── src
+│    ├── test
+│        ├── java
+│        │    ├── hellocucumber
+│        │        ├── commonComponents/
+│        │        ├── pageObjects/
+│        │        ├── steps/
+│        │        ├── utils/
+│        │        ├── runCucumberTest.java
+│        │
+│        ├── resources
+│            ├── drivers/
+│            ├── hellocucumber
+│                ├── features/*.feature
+│
+├── README.md
+└── .gitignore
+```
+
 # Installation steps
 
 1) In order to be able to run the tests, you will need:
