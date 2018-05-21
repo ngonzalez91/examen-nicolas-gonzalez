@@ -13,11 +13,12 @@ import java.util.concurrent.TimeUnit;
 public class FlightsGeoAutocompleteComponent extends AbstractBasePage {
 
   // SELECTORS
-  private By container1     = By.cssSelector(".geo-autocomplete-group");
-  private By itemContainer1  = By.cssSelector(".geo-autocomplete-group > ul > li > a");
+  private By container1     = By.cssSelector(".geo-autocomplete-main");
+  private By itemContainer1 = By.cssSelector(".geo-autocomplete-main > div:nth-child(1) a");
 
-  private By container2     = By.cssSelector(".ac-group-container");
-  private By itemContainer2 = By.cssSelector(".ac-group-container .ac-group-items > li > a");
+  private By container2     = By.cssSelector(".ac-container");
+  private By itemContainer2 = By.cssSelector(".ac-container ul > li:nth-child(1) span");
+
 
   // CONSTRUCTOR
   public FlightsGeoAutocompleteComponent(WebDriver driver) {
@@ -26,55 +27,53 @@ public class FlightsGeoAutocompleteComponent extends AbstractBasePage {
 
   // METHODS
   public void clickOnAirport (Integer indexOfItem ) {
-    if (this.isContainer1Present()) {
+
+    if (isContainer1Visible()) {
       System.out.println("------ >>> Espacioooo container 1 ---->>> ");
-
-      waitUntilItemsAreAllVisibles("container1");
-
-      driver.findElements(itemContainer1).get(indexOfItem - 1).click();
-
-      waitUntilContainerIsNotVisible ("container1");
+      waitUntilContainer1IsVisible();
+      driver.findElement(itemContainer1).click();
+      waitUntilContainer1IsNotVisible();
     } else {
       System.out.println("------ >>> Espacioooo container 2 ---->>> ");
-
-      waitUntilItemsAreAllVisibles("container1");
-
-      driver.findElements(itemContainer1).get(indexOfItem - 1).click();
-
-      waitUntilContainerIsNotVisible ("container1");
+      waitUntilContainer2IsVisible();
+      driver.findElement(itemContainer2).click();
+      waitUntilContainer2IsNotVisible();
     }
   }
 
-  public boolean isContainer1Present () {
+  public boolean isContainer1Visible () {
     try{
-
       WebDriverWait wait = new WebDriverWait(driver, 120);
       wait.until(ExpectedConditions.visibilityOf(driver.findElement(container1)));
 
       return true;
 
     }catch(Exception ex){
-
       return false;
-
     }
   }
 
-  public void waitUntilItemsAreAllVisibles (String nameOfContainer) {
+  public void waitUntilContainer1IsVisible () {
     WebDriverWait wait = new WebDriverWait(driver, 120);
-    if (nameOfContainer == "container1") {
-      wait.until(ExpectedConditions.visibilityOfAllElements(driver.findElements(itemContainer1)));
-    } else {
-      wait.until(ExpectedConditions.visibilityOfAllElements(driver.findElements(itemContainer2)));
-    }
+
+    wait.until(ExpectedConditions.visibilityOf(driver.findElement(container1)));
   }
 
-  public void waitUntilContainerIsNotVisible (String nameOfContainer) {
+  public void waitUntilContainer1IsNotVisible () {
     WebDriverWait wait = new WebDriverWait(driver, 120);
-    if (nameOfContainer == "container1") {
-      wait.until(ExpectedConditions.invisibilityOf(driver.findElement(container1)));
-    } else {
-      wait.until(ExpectedConditions.invisibilityOf(driver.findElement(container2)));
-    }
+
+    wait.until(ExpectedConditions.invisibilityOf(driver.findElement(container1)));
+  }
+
+  public void waitUntilContainer2IsVisible () {
+    WebDriverWait wait = new WebDriverWait(driver, 120);
+
+    wait.until(ExpectedConditions.visibilityOf(driver.findElement(container2)));
+  }
+
+  public void waitUntilContainer2IsNotVisible () {
+    WebDriverWait wait = new WebDriverWait(driver, 120);
+
+    wait.until(ExpectedConditions.invisibilityOf(driver.findElement(container2)));
   }
 }

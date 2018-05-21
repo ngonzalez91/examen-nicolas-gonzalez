@@ -20,12 +20,14 @@ public class FlightSearchSteps extends AbstractBaseSteps {
     @Given("^I search for flights$")
     public void i_search_for_flights(DataTable arg1) throws Exception {
         List<Map<String,String>> data = arg1.asMaps(String.class,String.class);
-//        System.out.println(data);
+
         String origin, destiny, departDate, returnDate;
+
         origin = data.get(0).get("from");
         destiny = data.get(0).get("to");
         departDate = data.get(0).get("depart date");
         returnDate = data.get(0).get("return date");
+
         searchFlightPage = new SearchFlightPage(getDriver());
         searchFlightPage.searchFlights(origin,destiny,departDate,returnDate);
     }

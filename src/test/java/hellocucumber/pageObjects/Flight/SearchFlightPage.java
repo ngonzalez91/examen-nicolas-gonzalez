@@ -48,7 +48,6 @@ public class SearchFlightPage extends AbstractBasePage {
     this.setOrigin(originValue);
     flightsGeoAutocompleteComponent.clickOnAirport(1);
 
-    driver.findElement(destiny).click();
     Utils.clearField(driver.findElement(destiny));
     this.setDestiny(destinyValue);
     flightsGeoAutocompleteComponent.clickOnAirport(1);
