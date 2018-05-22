@@ -1,6 +1,5 @@
 package hellocucumber.Utils;
 
-import hellocucumber.pageObjects.AbstractBasePage;
 import org.openqa.selenium.WebElement;
 
 public abstract class Utils {

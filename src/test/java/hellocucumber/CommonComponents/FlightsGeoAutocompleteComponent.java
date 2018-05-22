@@ -3,21 +3,18 @@ package hellocucumber.CommonComponents;
 import hellocucumber.pageObjects.AbstractBasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 public class FlightsGeoAutocompleteComponent extends AbstractBasePage {
 
   // SELECTORS
-  private By container1     = By.cssSelector(".geo-autocomplete-main");
-  private By itemContainer1 = By.cssSelector(".geo-autocomplete-main > div:nth-child(1) a");
+  private By container1     = By.cssSelector("div[class$='geo-show-autocomplete'] .geo-autocomplete-main");
+  private By itemContainer1 = By.cssSelector("div[class$='geo-show-autocomplete'] .geo-autocomplete-main > div:nth-child(1) a");
 
-  private By container2     = By.cssSelector(".ac-container");
-  private By itemContainer2 = By.cssSelector(".ac-container ul > li:nth-child(1) span");
+  private By container2     = By.cssSelector(".ac-wrapper.-desktop.-show");
+  private By itemContainer2 = By.cssSelector(".ac-wrapper.-desktop.-show ul > li:nth-child(1)");
 
 
   // CONSTRUCTOR
@@ -26,25 +23,25 @@ public class FlightsGeoAutocompleteComponent extends AbstractBasePage {
   }
 
   // METHODS
-  public void clickOnAirport (Integer indexOfItem ) {
+  public void clickOnAirport () {
 
-    if (isContainer1Visible()) {
-      System.out.println("------ >>> Espacioooo container 1 ---->>> ");
-      waitUntilContainer1IsVisible();
-      driver.findElement(itemContainer1).click();
-      waitUntilContainer1IsNotVisible();
+    if (this.isVisible(container1)) {
+      this.waitUntilPresenceOf(itemContainer1);
+      this.clickItem(itemContainer1);
     } else {
-      System.out.println("------ >>> Espacioooo container 2 ---->>> ");
-      waitUntilContainer2IsVisible();
-      driver.findElement(itemContainer2).click();
-      waitUntilContainer2IsNotVisible();
+      this.waitUntilPresenceOf(itemContainer2);
+      this.clickItem(itemContainer2);
     }
   }
 
-  public boolean isContainer1Visible () {
+  public void clickItem (By bySelector) {
+    driver.findElement(bySelector).click();
+  }
+
+  public boolean isVisible (By bySelector) {
     try{
       WebDriverWait wait = new WebDriverWait(driver, 120);
-      wait.until(ExpectedConditions.visibilityOf(driver.findElement(container1)));
+      wait.until(ExpectedConditions.visibilityOf(driver.findElement(bySelector)));
 
       return true;
 
@@ -53,27 +50,9 @@ public class FlightsGeoAutocompleteComponent extends AbstractBasePage {
     }
   }
 
-  public void waitUntilContainer1IsVisible () {
+  public void waitUntilPresenceOf (By bySelector) {
     WebDriverWait wait = new WebDriverWait(driver, 120);
 
-    wait.until(ExpectedConditions.visibilityOf(driver.findElement(container1)));
-  }
-
-  public void waitUntilContainer1IsNotVisible () {
-    WebDriverWait wait = new WebDriverWait(driver, 120);
-
-    wait.until(ExpectedConditions.invisibilityOf(driver.findElement(container1)));
-  }
-
-  public void waitUntilContainer2IsVisible () {
-    WebDriverWait wait = new WebDriverWait(driver, 120);
-
-    wait.until(ExpectedConditions.visibilityOf(driver.findElement(container2)));
-  }
-
-  public void waitUntilContainer2IsNotVisible () {
-    WebDriverWait wait = new WebDriverWait(driver, 120);
-
-    wait.until(ExpectedConditions.invisibilityOf(driver.findElement(container2)));
+    wait.until(ExpectedConditions.presenceOfElementLocated(bySelector));
   }
 }

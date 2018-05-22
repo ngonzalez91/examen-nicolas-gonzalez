@@ -1,5 +1,6 @@
 package hellocucumber.pageObjects.Flight;
 
+import hellocucumber.CommonComponents.DateTimePickerComponent;
 import hellocucumber.CommonComponents.FlightsGeoAutocompleteComponent;
 import hellocucumber.Utils.Utils;
 import hellocucumber.pageObjects.AbstractBasePage;
@@ -46,18 +47,19 @@ public class SearchFlightPage extends AbstractBasePage {
 
     Utils.clearField(driver.findElement(origin));
     this.setOrigin(originValue);
-    flightsGeoAutocompleteComponent.clickOnAirport(1);
+    flightsGeoAutocompleteComponent.clickOnAirport();
 
     Utils.clearField(driver.findElement(destiny));
     this.setDestiny(destinyValue);
-    flightsGeoAutocompleteComponent.clickOnAirport(1);
+    flightsGeoAutocompleteComponent.clickOnAirport();
 
-//    Utils.clearField(driver.findElement(departDate));
-//    this.setDepartDate(departDateValue);
-//
-//    Utils.clearField(driver.findElement(departDate));
-//    this.setDepartDate(returnDateValue);
-//
-//    this.clickSearchButton();
+
+    driver.findElement(departDate).click();
+    DateTimePickerComponent dateTimePickerComponent = new DateTimePickerComponent(driver);
+    dateTimePickerComponent.setDate(departDateValue);
+
+    dateTimePickerComponent.setDate(returnDateValue);
+
+    this.clickSearchButton();
   }
 }

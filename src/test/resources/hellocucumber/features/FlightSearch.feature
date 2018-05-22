@@ -6,4 +6,4 @@ Feature: Flight search
     When I search for flights
       | from | to  | depart date | return date |
       | EZE  | MVD | Tomorrow    | In 1 week   |
-#    Then I am lead to Search Flight results page
+    Then I am lead to Search Flight results page
