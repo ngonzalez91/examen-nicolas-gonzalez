@@ -24,57 +24,72 @@ public class DateTimePickerComponent extends AbstractBasePage {
   public void setDate(String date) {
     switch (date.toLowerCase()) {
       case "tomorrow":
-        this.clickFutureDay(1);
+        this.clickFutureDay(false, 1);
         break;
       case "in 1 week":
-        this.clickFutureDay(7);
+        this.clickFutureDay(false,7);
+        break;
+      case "in 10 days":
+        this.clickFutureDay(false,10);
     }
   }
 
-  public void clickFutureDay (Integer daysInFuture) {
-    List<WebElement> currentMonthDates = driver.findElements(currentMonthDate);
-    Integer sizeOfList = currentMonthDates.size();
-    Integer indexWhereILeft = 0;
+  public void clickFutureDay (Boolean nightStayCriteria, Integer daysInFuture) {
 
-    // Search today webelement
-    for( int i = 0; i<sizeOfList; i++) {
-      WebElement today = null;
-      WebElement tomorrow = null;
-      if (currentMonthDates.get(i).getAttribute("class").contains("--today")) {
-        today = currentMonthDates.get(i);
-      }
+      List<WebElement> currentMonthDates = driver.findElements(currentMonthDate);
+      Integer sizeOfList = currentMonthDates.size();
+      Integer indexWhereILeft = 0;
 
-      if (today != null) {
-        indexWhereILeft = i;
-        break;
-      }
-    }
-    Integer dayCounter = 0;
-    Boolean dayIsClicked = false;
-
-    // Start counting days
-    for( int i = indexWhereILeft ; i<sizeOfList; i++) {
-      if (dayCounter == daysInFuture) {
-        currentMonthDates.get(i).click();
-        dayIsClicked = true;
-        break;
-      }
-      else {
-        dayCounter++;
+      // Search today webelement
+      for (int i = 0; i < sizeOfList; i++) {
+        WebElement today = null;
+        if (nightStayCriteria) {
+          if (currentMonthDates.get(i).getAttribute("class").contains("--range-start")) {
+            today = currentMonthDates.get(i);
+          }
+        } else {
+          if (currentMonthDates.get(i).getAttribute("class").contains("--today")) {
+            today = currentMonthDates.get(i);
+          }
         }
-    }
 
-    // If day was not clicked, is because you reach the end of month. Hence, we move to next month
-    if (!dayIsClicked) {
-      List<WebElement> nextMonthDates = driver.findElements(nextMonthDate);
-      for( int i = 0; i<dayCounter; i++) {
-        if ( dayCounter==daysInFuture) {
-          nextMonthDates.get(i).click();
+        if (today != null) {
+          indexWhereILeft = i;
+          break;
+        }
+      }
+      Integer dayCounter = 0;
+      Boolean dayIsClicked = false;
+
+      // Start counting days
+      for (int i = indexWhereILeft; i < sizeOfList; i++) {
+        if (dayCounter == daysInFuture) {
+          currentMonthDates.get(i).click();
+          dayIsClicked = true;
           break;
         } else {
           dayCounter++;
         }
       }
+
+      // If day was not clicked, is because you reach the end of month. Hence, we move to next month
+      if (!dayIsClicked) {
+        List<WebElement> nextMonthDates = driver.findElements(nextMonthDate);
+        for (int i = 0; i < dayCounter; i++) {
+          if (dayCounter == daysInFuture) {
+            nextMonthDates.get(i).click();
+            break;
+          } else {
+            dayCounter++;
+          }
+        }
+      }
+  }
+
+  public void setStayDuration(String checkOutValue) {
+    switch (checkOutValue) {
+      case "3 nights":
+        this.clickFutureDay(true, 3);
     }
   }
 }

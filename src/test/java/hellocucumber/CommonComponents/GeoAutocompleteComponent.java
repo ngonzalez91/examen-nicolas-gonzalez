@@ -7,7 +7,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 
-public class FlightsGeoAutocompleteComponent extends AbstractBasePage {
+public class GeoAutocompleteComponent extends AbstractBasePage {
 
   // SELECTORS
   private By container1     = By.cssSelector("div[class$='geo-show-autocomplete'] .geo-autocomplete-main");
@@ -18,12 +18,12 @@ public class FlightsGeoAutocompleteComponent extends AbstractBasePage {
 
 
   // CONSTRUCTOR
-  public FlightsGeoAutocompleteComponent(WebDriver driver) {
+  public GeoAutocompleteComponent(WebDriver driver) {
     super(driver);
   }
 
   // METHODS
-  public void clickOnAirport () {
+  public void clickFirstItem() {
 
     if (this.isVisible(container1)) {
       this.waitUntilPresenceOf(itemContainer1);

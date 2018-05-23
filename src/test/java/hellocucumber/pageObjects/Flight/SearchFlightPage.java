@@ -1,7 +1,7 @@
 package hellocucumber.pageObjects.Flight;
 
 import hellocucumber.CommonComponents.DateTimePickerComponent;
-import hellocucumber.CommonComponents.FlightsGeoAutocompleteComponent;
+import hellocucumber.CommonComponents.GeoAutocompleteComponent;
 import hellocucumber.Utils.Utils;
 import hellocucumber.pageObjects.AbstractBasePage;
 import org.openqa.selenium.By;
@@ -43,15 +43,15 @@ public class SearchFlightPage extends AbstractBasePage {
   }
 
   public void searchFlights (String originValue, String destinyValue, String departDateValue, String returnDateValue) {
-    FlightsGeoAutocompleteComponent flightsGeoAutocompleteComponent = new FlightsGeoAutocompleteComponent(driver);
+    GeoAutocompleteComponent geoAutocompleteComponent = new GeoAutocompleteComponent(driver);
 
     Utils.clearField(driver.findElement(origin));
     this.setOrigin(originValue);
-    flightsGeoAutocompleteComponent.clickOnAirport();
+    geoAutocompleteComponent.clickFirstItem();
 
     Utils.clearField(driver.findElement(destiny));
     this.setDestiny(destinyValue);
-    flightsGeoAutocompleteComponent.clickOnAirport();
+    geoAutocompleteComponent.clickFirstItem();
 
 
     driver.findElement(departDate).click();
