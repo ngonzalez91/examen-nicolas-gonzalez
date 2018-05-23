@@ -8,4 +8,8 @@ public abstract class Utils {
   public static void clearField (WebElement webElement) {
     webElement.clear();
   }
+
+  public static void clickWebElement(WebElement webElement) {
+    webElement.click();
+  }
 }
